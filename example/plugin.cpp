@@ -4,7 +4,9 @@
 #include <iostream>
 #include <vector>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 
 // Basic interface as required by plugins
 class LomiriPluginHostInterface {};
