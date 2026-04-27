@@ -6,8 +6,8 @@ This repository showcases a simple plugin built for the Lomiri Desktop (https://
 
 The Lomiri shell accomplishes this via an embedded WASM runtime environment, "WebAssembly Micro Runtime".
 This runtime allows for embedding a plugin loader into a project and allows running WebAssembly code.
-"WAMR" specifically has additional features, like supporting TCP & UDP sockets, which are also pretty
-useful to potential plugin projects.
+"WAMR" specifically has additional features, like supporting TCP & UDP sockets and threads, which are also
+pretty useful to potential plugin projects.
 
 ## License
 
