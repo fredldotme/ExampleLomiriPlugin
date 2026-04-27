@@ -12,7 +12,7 @@ class LomiriPluginHostInterface {};
 // Search results in the drawer
 struct LomiriPluginDrawerSearchResult {
     std::string title;
-    std::string iconSource;
+    std::string sourceIcon;
 };
 
 // Implementing the "search results" interface
@@ -68,7 +68,7 @@ LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::next()
 // The set of features the plugin implements.
 LomiriPluginFeatures lomiri_plugin_features()
 {
-    return LomiriPluginFeatures::LomiriDrawerResultsFeature;
+    return LomiriPluginFeatures::DrawerResultsFeature;
 }
 
 // Name of the Lomiri Plugin.
@@ -87,7 +87,7 @@ const char* lomiri_plugin_description()
 LomiriPluginInterface lomiri_plugin_get_interface(const LomiriPluginFeatures feature)
 {
     switch (feature) {
-    case LomiriPluginFeatures::LomiriDrawerResultsFeature:
+    case LomiriPluginFeatures::DrawerResultsFeature:
         return static_cast<LomiriPluginInterface>(&globalDrawerSearch);
     default:
         return nullptr;
@@ -101,8 +101,7 @@ void lomiri_plugin_drawersearch_search(LomiriPluginInterface interface, const ch
     if (!drawer_search)
         return;
 
-    const auto result = drawer_search->search(std::string(contents));
-    std::cout << "Result: " << result;
+    drawer_search->search(std::string(contents));
 }
 
 // Get the DrawerSearchResult of the current position.
@@ -153,3 +152,7 @@ const char* lomiri_plugin_drawersearch_result_sourceicon(LomiriDrawerSearchResul
 void lomiri_plugin_drawersearch_result_open(LomiriDrawerSearchResult result)
 {
 }
+
+#ifdef __cplusplus
+}
+#endif
