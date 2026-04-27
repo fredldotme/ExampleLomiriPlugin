@@ -108,8 +108,7 @@ void lomiri_plugin_drawersearch_search(LomiriPluginInterface interface, const ch
 }
 
 // Get the DrawerSearchResult of the current position.
-LomiriDrawerSearchResult lomiri_plugin_drawersearch_find(LomiriPluginInterface interface,
-                                                         const char* hint)
+LomiriDrawerSearchResult lomiri_plugin_drawersearch_find(LomiriPluginInterface interface)
 {
     auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
     if (!drawer_search)
