@@ -25,7 +25,7 @@ const char* PUBLIC lomiri_plugin_description();
 LomiriPluginInterface PUBLIC lomiri_plugin_get_interface(const LomiriPluginFeatures feature);
 
 // LomiriDrawerSearch interface
-void PUBLIC lomiri_plugin_drawersearch_search(LomiriPluginInterface completer,
+void PUBLIC lomiri_plugin_drawersearch_search(LomiriPluginInterface interface,
                                               const char* contents);
 LomiriDrawerSearchResult PUBLIC lomiri_plugin_drawersearch_find(LomiriPluginInterface interface);
 LomiriDrawerSearchResult PUBLIC lomiri_plugin_drawersearch_next(LomiriPluginInterface interface);
