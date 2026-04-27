@@ -34,7 +34,6 @@ static LomiriPluginDrawerSearch globalDrawerSearch;
 // Initiate a search based on the query parameter "contents"
 void LomiriPluginDrawerSearch::search(const std::string& contents)
 {
-#if 0
     searchResults.clear();
     for (int i = 0; i < 3; i++) {
         LomiriPluginDrawerSearchResult res;
@@ -42,7 +41,6 @@ void LomiriPluginDrawerSearch::search(const std::string& contents)
         res.sourceIcon = "";
         searchResults.push_back(res);
     }
-#endif
 
     cit = searchResults.begin();
 
@@ -67,7 +65,7 @@ LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::next()
     return &(*it);
 }
 
-// The set of features the plugin implements.
+// The set of features this plugin implements.
 LomiriPluginFeatures lomiri_plugin_features()
 {
     return LomiriPluginFeatures::DrawerResultsFeature;
