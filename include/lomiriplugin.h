@@ -30,9 +30,9 @@ void PUBLIC lomiri_plugin_drawersearch_search(LomiriPluginInterface completer,
 LomiriDrawerSearchResult PUBLIC lomiri_plugin_drawersearch_find(LomiriPluginInterface interface);
 LomiriDrawerSearchResult PUBLIC lomiri_plugin_drawersearch_next(LomiriPluginInterface interface);
 
-const char* PUBLIC lomiri_plugin_drawersearch_result_type(LomiriDrawerSearchResult result);
-const char* PUBLIC lomiri_plugin_drawersearch_result_identifier(LomiriDrawerSearchResult result);
-const char* PUBLIC lomiri_plugin_drawersearch_result_detail(LomiriDrawerSearchResult result);
+// LomiriDrawerSearchResults
+const char* PUBLIC lomiri_plugin_drawersearch_result_title(LomiriDrawerSearchResult result);
+const char* PUBLIC lomiri_plugin_drawersearch_result_sourceicon(LomiriDrawerSearchResult result);
 void PUBLIC lomiri_plugin_drawersearch_result_open(LomiriDrawerSearchResult result);
 
 #ifdef __cplusplus
