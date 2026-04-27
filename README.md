@@ -9,6 +9,13 @@ This runtime allows for embedding a plugin loader into a project and allows runn
 "WAMR" specifically has additional features, like supporting TCP & UDP sockets and threads, which are also
 pretty useful to potential plugin projects.
 
+## How to build
+
+- Get Tide IDE (https://snapcraft.io/tide-ide)
+- Clone this repository
+- Open the `example.pro` file using Tide
+- Build or Release a build using the Play button
+
 ## License
 
 To be decided
