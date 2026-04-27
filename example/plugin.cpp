@@ -118,11 +118,12 @@ LomiriDrawerSearchResult lomiri_plugin_drawersearch_find(LomiriPluginInterface i
 // Get the DrawerSearchResult of the next position.
 LomiriDrawerSearchResult lomiri_plugin_drawersearch_next(LomiriPluginInterface interface)
 {
-    if (!interface)
+    auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
+    if (!drawer_search)
         return nullptr;
 
-    const auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
-    return static_cast<LomiriDrawerSearchResult>(drawer_search->next());
+    const auto result = drawer_search->next();
+    return static_cast<LomiriDrawerSearchResult>(result);
 }
 
 // Returns the title of the DrawerSearchResult.
