@@ -1,4 +1,4 @@
-#include <tideplugin.h>
+#include <lomiriplugin.h>
 
 #include <string>
 #include <iostream>
