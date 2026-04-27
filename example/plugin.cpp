@@ -30,23 +30,21 @@ private:
 static LomiriPluginDrawerSearch globalDrawerSearch;
 
 // Initiate a search based on the query parameter "contents"
-bool LomiriPluginDrawerSearch::search(const std::string& contents)
+void LomiriPluginDrawerSearch::search(const std::string& contents)
 {
 #if 0
-    completionResults.clear();
+    searchResults.clear();
     for (int i = 0; i < 3; i++) {
-        TidePluginAutoCompleterResult res;
-        res.kind = AutoCompletorKind::Variable;
-        res.type = "int";
-        res.identifier = "PluginWorking_" + std::to_string(i);
-        res.detail = "ExamplePlugin";
-        completionResults.push_back(res);
+        LomiriPluginDrawerSearchResult res;
+        res.title = "Example Plugin";
+        res.sourceIcon = "";
+        searchResults.push_back(res);
     }
 #endif
 
     cit = searchResults.begin();
 
-    return true;
+    return;
 }
 
 // Get the DrawerSearchResult at the current position.
