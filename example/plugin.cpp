@@ -12,7 +12,7 @@ struct LomiriPluginDrawerSearchResult {
     std::string sourceIcon;
 };
 
-// Implementing the "search results" interface
+// Implementing the "search" & "search results" interface
 class LomiriPluginDrawerSearch : public LomiriPluginHostInterface {
 public:
     void search(const std::string& query);
@@ -138,7 +138,7 @@ const char* lomiri_plugin_drawersearch_result_title(LomiriDrawerSearchResult res
     return res->title.c_str();
 }
 
-// Returns an optional icon of the DrawerSearchResult.
+// Returns an optional icon URL of the DrawerSearchResult.
 const char* lomiri_plugin_drawersearch_result_sourceicon(LomiriDrawerSearchResult result)
 {
     if (!result)
