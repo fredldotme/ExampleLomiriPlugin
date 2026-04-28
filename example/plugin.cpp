@@ -30,7 +30,7 @@ private:
 // Only one instantiation
 static LomiriPluginDrawerSearch globalDrawerSearch;
 
-// Initiate a search based on the query parameter "contents"
+// Initiate a search based on the parameter "query"
 void LomiriPluginDrawerSearch::search(const std::string& query)
 {
     searchResults.clear();
@@ -94,7 +94,7 @@ LomiriPluginInterface lomiri_plugin_get_interface(const LomiriPluginFeatures fea
     }
 }
 
-// Initiating a search for "contents"
+// Initiating a search for "query"
 void lomiri_plugin_drawersearch_search(LomiriPluginInterface interface, const char* query)
 {
     auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
