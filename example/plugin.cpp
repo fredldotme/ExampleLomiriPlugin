@@ -20,8 +20,8 @@ struct LomiriPluginDrawerSearchResult {
 // Implementing the "search results" interface
 class LomiriPluginDrawerSearch : public LomiriPluginHostInterface {
 public:
-    void search(const std::string& contents);
-    LomiriPluginDrawerSearchResult* find();
+    void search(const std::string& query);
+    LomiriPluginDrawerSearchResult* get();
     LomiriPluginDrawerSearchResult* next();
 private:
     std::vector<LomiriPluginDrawerSearchResult> searchResults;
@@ -32,9 +32,10 @@ private:
 static LomiriPluginDrawerSearch globalDrawerSearch;
 
 // Initiate a search based on the query parameter "contents"
-void LomiriPluginDrawerSearch::search(const std::string& contents)
+void LomiriPluginDrawerSearch::search(const std::string& query)
 {
     searchResults.clear();
+
     for (int i = 0; i < 3; i++) {
         LomiriPluginDrawerSearchResult res;
         res.title = "Example Plugin";
@@ -48,7 +49,7 @@ void LomiriPluginDrawerSearch::search(const std::string& contents)
 }
 
 // Get the DrawerSearchResult at the current position.
-LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::find()
+LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::get()
 {
     return &(*cit);
 }
@@ -95,23 +96,23 @@ LomiriPluginInterface lomiri_plugin_get_interface(const LomiriPluginFeatures fea
 }
 
 // Initiating a search for "contents"
-void lomiri_plugin_drawersearch_search(LomiriPluginInterface interface, const char* contents)
+void lomiri_plugin_drawersearch_search(LomiriPluginInterface interface, const char* query)
 {
     auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
     if (!drawer_search)
         return;
 
-    drawer_search->search(std::string(contents));
+    drawer_search->search(std::string(query));
 }
 
 // Get the DrawerSearchResult of the current position.
-LomiriDrawerSearchResult lomiri_plugin_drawersearch_find(LomiriPluginInterface interface)
+LomiriDrawerSearchResult lomiri_plugin_drawersearch_get(LomiriPluginInterface interface)
 {
     auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
     if (!drawer_search)
         return nullptr;
 
-    const auto result = drawer_search->find();
+    const auto result = drawer_search->get();
     return static_cast<LomiriDrawerSearchResult>(result);
 }
 
