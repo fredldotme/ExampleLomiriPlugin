@@ -67,7 +67,7 @@ extern "C" {
 // The set of features this plugin implements.
 LomiriPluginFeatures lomiri_plugin_features()
 {
-    return LomiriPluginFeatures::DrawerResultsFeature;
+    return LomiriPluginFeatures::DrawerSearchResultsFeature;
 }
 
 // Name of the Lomiri Plugin.
@@ -86,7 +86,7 @@ const char* lomiri_plugin_description()
 LomiriPluginInterface lomiri_plugin_get_interface(const LomiriPluginFeatures feature)
 {
     switch (feature) {
-    case LomiriPluginFeatures::DrawerResultsFeature:
+    case LomiriPluginFeatures::DrawerSearchResultsFeature:
         return static_cast<LomiriPluginInterface>(&globalDrawerSearch);
     default:
         return nullptr;
@@ -159,4 +159,4 @@ void lomiri_plugin_drawersearch_result_open(LomiriDrawerSearchResult result)
 {
 }
 
-}
+} // extern "C"

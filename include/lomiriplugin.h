@@ -9,7 +9,7 @@ extern "C"{
 // Needs to be in sync with Lomiri's variant of the enum type.
 enum LomiriPluginFeatures {
     NoneFeature = 0,
-    DrawerResultsFeature = (1 << 1),
+    DrawerSearchResultsFeature = (1 << 1),
 };
 
 // Specializations
