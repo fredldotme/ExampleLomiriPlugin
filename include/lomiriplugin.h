@@ -5,6 +5,8 @@
 extern "C"{
 #endif
 
+// The features available to the plugin system.
+// Needs to be in sync with Lomiri's variant of the enum type.
 enum LomiriPluginFeatures {
     NoneFeature = 0,
     DrawerResultsFeature = (1 << 1),
