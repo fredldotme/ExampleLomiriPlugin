@@ -5,8 +5,8 @@
 
 // Search results in the drawer
 struct LomiriPluginDrawerSearchResult {
-    std::string title;
-    std::string sourceIcon;
+    const std::string title;
+    const std::string sourceIcon;
 };
 
 // Implementing the "search" & "search results" interface
@@ -29,9 +29,10 @@ void LomiriPluginDrawerSearch::search(const std::string& query) const
     searchResults.clear();
 
     for (int i = 0; i < 3; i++) {
-        LomiriPluginDrawerSearchResult res;
-        res.title = "Example Plugin";
-        res.sourceIcon = "";
+        const LomiriPluginDrawerSearchResult res {
+            .title = "Example plugin",
+            .sourceIcon = ""
+        };
         searchResults.push_back(res);
     }
 
