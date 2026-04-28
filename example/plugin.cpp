@@ -3,9 +3,6 @@
 #include <string>
 #include <vector>
 
-// Basic interface as required by plugins
-class LomiriPluginHostInterface {};
-
 // Search results in the drawer
 struct LomiriPluginDrawerSearchResult {
     std::string title;
@@ -13,7 +10,7 @@ struct LomiriPluginDrawerSearchResult {
 };
 
 // Implementing the "search" & "search results" interface
-class LomiriPluginDrawerSearch : public LomiriPluginHostInterface {
+class LomiriPluginDrawerSearch {
 public:
     void search(const std::string& query);
     LomiriPluginDrawerSearchResult* get();
