@@ -62,7 +62,7 @@ LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::next()
         return nullptr;
 
     cit = it;
-    return &(*it);
+    return get();
 }
 
 // The set of features this plugin implements.
@@ -133,6 +133,9 @@ const char* lomiri_plugin_drawersearch_result_title(LomiriDrawerSearchResult res
         return nullptr;
 
     const auto res = static_cast<LomiriPluginDrawerSearchResult*>(result);
+    if (!res)
+        return nullptr;
+
     return res->title.c_str();
 }
 
@@ -143,6 +146,9 @@ const char* lomiri_plugin_drawersearch_result_sourceicon(LomiriDrawerSearchResul
         return nullptr;
 
     const auto res = static_cast<LomiriPluginDrawerSearchResult*>(result);
+    if (!res)
+        return nullptr;
+
     return res->sourceIcon.c_str();
 }
 
