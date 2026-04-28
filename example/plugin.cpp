@@ -30,7 +30,7 @@ void LomiriPluginDrawerSearch::search(const std::string& query) const
 
     for (int i = 0; i < 3; i++) {
         const LomiriPluginDrawerSearchResult res {
-            .title = "Example plugin",
+            .title = "Example plugin " + std::to_string(i),
             .sourceIcon = ""
         };
         searchResults.push_back(res);
