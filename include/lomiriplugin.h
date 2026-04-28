@@ -15,7 +15,6 @@ enum LomiriPluginFeatures {
 // Specializations
 typedef void* LomiriPluginInterface;
 typedef void* LomiriDrawerSearchResult;
-typedef void* LomiriDrawerSearchModel;
 
 // Plugins define publicly available functions
 #define PUBLIC __attribute__((visibility("default")))
