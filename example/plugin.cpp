@@ -1,7 +1,6 @@
 #include <lomiriplugin.h>
 
 #include <string>
-#include <iostream>
 #include <vector>
 
 #ifdef __cplusplus
