@@ -3,10 +3,6 @@
 #include <string>
 #include <vector>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 // Basic interface as required by plugins
 class LomiriPluginHostInterface {};
 
@@ -64,6 +60,9 @@ LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::next()
     cit = it;
     return get();
 }
+
+// Public API starts here
+extern "C" {
 
 // The set of features this plugin implements.
 LomiriPluginFeatures lomiri_plugin_features()
@@ -160,6 +159,4 @@ void lomiri_plugin_drawersearch_result_open(LomiriDrawerSearchResult result)
 {
 }
 
-#ifdef __cplusplus
 }
-#endif
