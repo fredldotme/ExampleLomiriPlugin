@@ -12,19 +12,19 @@ struct LomiriPluginDrawerSearchResult {
 // Implementing the "search" & "search results" interface
 class LomiriPluginDrawerSearch {
 public:
-    void search(const std::string& query);
-    LomiriPluginDrawerSearchResult* get();
-    LomiriPluginDrawerSearchResult* next();
+    void search(const std::string& query) const;
+    LomiriPluginDrawerSearchResult* get() const;
+    LomiriPluginDrawerSearchResult* next() const;
 private:
-    std::vector<LomiriPluginDrawerSearchResult> searchResults;
-    std::vector<LomiriPluginDrawerSearchResult>::iterator cit;
+    mutable std::vector<LomiriPluginDrawerSearchResult> searchResults;
+    mutable std::vector<LomiriPluginDrawerSearchResult>::iterator cit;
 };
 
 // Only one instantiation
 static LomiriPluginDrawerSearch globalDrawerSearch;
 
 // Initiate a search based on the parameter "query"
-void LomiriPluginDrawerSearch::search(const std::string& query)
+void LomiriPluginDrawerSearch::search(const std::string& query) const
 {
     searchResults.clear();
 
@@ -41,15 +41,15 @@ void LomiriPluginDrawerSearch::search(const std::string& query)
 }
 
 // Get the DrawerSearchResult at the current position.
-LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::get()
+LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::get() const
 {
     return &(*cit);
 }
 
 // Get the next DrawerSearchResult, or nullptr if at the end.
-LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::next()
+LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::next() const
 {
-    auto it = (cit + 1);
+    const auto it = (cit + 1);
 
     if (it == searchResults.end())
         return nullptr;
@@ -93,7 +93,7 @@ LomiriPluginInterface lomiri_plugin_get_interface(const LomiriPluginFeatures fea
 // Initiating a search for "query"
 void lomiri_plugin_drawersearch_search(LomiriPluginInterface interface, const char* query)
 {
-    auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
+    const auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
     if (!drawer_search)
         return;
 
@@ -103,7 +103,7 @@ void lomiri_plugin_drawersearch_search(LomiriPluginInterface interface, const ch
 // Get the DrawerSearchResult of the current position.
 LomiriDrawerSearchResult lomiri_plugin_drawersearch_get(LomiriPluginInterface interface)
 {
-    auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
+    const auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
     if (!drawer_search)
         return nullptr;
 
@@ -114,7 +114,7 @@ LomiriDrawerSearchResult lomiri_plugin_drawersearch_get(LomiriPluginInterface in
 // Get the DrawerSearchResult of the next position.
 LomiriDrawerSearchResult lomiri_plugin_drawersearch_next(LomiriPluginInterface interface)
 {
-    auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
+    const auto drawer_search = static_cast<LomiriPluginDrawerSearch*>(interface);
     if (!drawer_search)
         return nullptr;
 
@@ -125,9 +125,6 @@ LomiriDrawerSearchResult lomiri_plugin_drawersearch_next(LomiriPluginInterface i
 // Returns the title of the DrawerSearchResult.
 const char* lomiri_plugin_drawersearch_result_title(LomiriDrawerSearchResult result)
 {
-    if (!result)
-        return nullptr;
-
     const auto res = static_cast<LomiriPluginDrawerSearchResult*>(result);
     if (!res)
         return nullptr;
@@ -138,9 +135,6 @@ const char* lomiri_plugin_drawersearch_result_title(LomiriDrawerSearchResult res
 // Returns an optional icon URL of the DrawerSearchResult.
 const char* lomiri_plugin_drawersearch_result_sourceicon(LomiriDrawerSearchResult result)
 {
-    if (!result)
-        return nullptr;
-
     const auto res = static_cast<LomiriPluginDrawerSearchResult*>(result);
     if (!res)
         return nullptr;
