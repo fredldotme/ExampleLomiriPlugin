@@ -58,7 +58,7 @@ LomiriPluginDrawerSearchResult* LomiriPluginDrawerSearch::next()
         return nullptr;
 
     cit = it;
-    return get();
+    return &(*cit);
 }
 
 // Public API starts here

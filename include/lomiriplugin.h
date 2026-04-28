@@ -13,6 +13,8 @@ enum LomiriPluginFeatures {
 };
 
 // Specializations
+// "LomiriDrawer" types (i.e "LomiriDrawerSearchResult") are public API
+// "LomiriPluginDrawer" types (like "LomiriPluginDrawerSearchResult") are private to the plugin
 typedef void* LomiriPluginInterface;
 typedef void* LomiriDrawerSearchResult;
 
